@@ -1,6 +1,6 @@
 {
-  "name": "arcads",
-  "version": "1.5.0",
+  "name": "@product-hackers/arcads",
+  "version": "1.6.0",
   "description": "ArcAds is a DFP wrapper created by Arc Publishing with publishers in mind.",
   "main": "dist/arcads.js",
   "scripts": {
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/washingtonpost/arcads.git"
+    "url": "git+https://github.com/ProductHackers/arcads.git"
   },
   "keywords": [
     "ads",
@@ -28,7 +28,7 @@
   "author": "Arc",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/washingtonpost/arcads/issues"
+    "url": "https://github.com/ProductHackers/arcads/issues"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.37",

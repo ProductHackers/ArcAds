@@ -1,4 +1,3 @@
-import { debounce } from '../util/debounce';
 import { fetchBids } from './headerbidding';
 import { refreshSlot } from './gpt';
 
@@ -141,19 +140,3 @@ export function runResizeEvents(params) {
     }
   };
 }
-
-/**
-* @desc Assigns an event listener for a size mapped ad which detects when the screen resizes past a breakpoint in the sizemap.
-* Also stores the event listener in an object sorted by the advertisement id so it can be unbound later if needed.
-* @param {object} params - An object containing all of the advertisement configuration settings such as slot name, id, and position.
-**/
-export function setResizeListener(params) {
-  const { id, correlators } = params;
-
-  resizeListeners[id] = debounce(runResizeEvents(params), 250);
-  window.addEventListener('resize', resizeListeners[id]);
-
-  // Adds the listener to an object with the id as the key so we can unbind it later.
-  sizemapListeners[id] = { listener: resizeListeners[id], correlators };
-}
-

@@ -2,7 +2,7 @@ import { MobileDetection } from './util/mobile';
 import { fetchBids, initializeBiddingServices } from './services/headerbidding';
 import { initializeGPT, queueGoogletagCommand, refreshSlot, dfpSettings, setTargeting, determineSlotName } from './services/gpt';
 import { queuePrebidCommand, addUnit } from './services/prebid';
-import { prepareSizeMaps, setResizeListener } from './services/sizemapping';
+import { prepareSizeMaps } from './services/sizemapping';
 
 /** @desc Displays an advertisement from Google DFP with optional support for Prebid.js and Amazon TAM/A9. **/
 export class ArcAds {
@@ -121,26 +121,12 @@ export class ArcAds {
 
 
     if (sizemap && sizemap.breakpoints && dimensions) {
-      const { mapping, breakpoints, correlators } = prepareSizeMaps(parsedDimensions, sizemap.breakpoints);
+      const { mapping } = prepareSizeMaps(parsedDimensions, sizemap.breakpoints);
 
       if (ad) {
         ad.defineSizeMapping(mapping);
       } else {
         return false;
-      }
-
-      if (sizemap.refresh) {
-        setResizeListener({
-          ad,
-          slotName: fullSlotName,
-          breakpoints,
-          id,
-          mapping,
-          correlators,
-          bidding,
-          wrapper: this.wrapper,
-          prerender
-        });
       }
     }
 
